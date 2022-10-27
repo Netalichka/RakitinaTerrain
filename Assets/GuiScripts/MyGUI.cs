@@ -32,4 +32,5 @@ public class MyGUI : MonoBehaviour
         GUI.BeginGroup(new Rect(Screen.width / 2 - 25, 10, 200, 200));
         GUI.Label(new Rect(0, 0, 50, 20), "HP = 100");
         GUI.EndGroup();
+    }
 }
