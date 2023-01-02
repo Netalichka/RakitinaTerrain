@@ -24,7 +24,7 @@ public class GUIAdvanced : MonoBehaviour
     }
 
     // Отрисовка пользовательского слайдера
-    float LabelSlider(Rect screenRect, float sliderValue, float sliderMaxValue, string labelText) // ДЗ добавить MinValue
+    float LabelSlider(Rect screenRect, float sliderValue, float sliderMinValue, string labelText) // ДЗ добавить MinValue
     {
         // создаём прямоугольник с координатами в пространстве и заданой шириной и высотой 
         Rect labelRect = new Rect(screenRect.x, screenRect.y, screenRect.width / 2, screenRect.height);
@@ -32,7 +32,7 @@ public class GUIAdvanced : MonoBehaviour
         GUI.Label(labelRect, labelText);   // создаём Label на экране
 
         Rect sliderRect = new Rect(screenRect.x + screenRect.width / 2, screenRect.y, screenRect.width / 2, screenRect.height); // Задаём размеры слайдера
-        sliderValue = GUI.HorizontalSlider(sliderRect, sliderValue, 0.0f, sliderMaxValue); // Вырисовываем слайдер и считываем его параметр
+        sliderValue = GUI.HorizontalSlider(sliderRect, sliderValue, 0.0f, sliderMinValue); // Вырисовываем слайдер и считываем его параметр
         return sliderValue; // Возвращаем значение слайдера
     }
 
@@ -49,6 +49,9 @@ public class GUIAdvanced : MonoBehaviour
         screenRect.y += 20;
         rgb.b = LabelSlider(screenRect, rgb.b, 1.0f, "Blue");
 
-                return rgb; // возвращаем цвет
+        screenRect.y += 20;
+        rgb.a = LabelSlider(screenRect, rgb.a, 1.0f, "Yelow");
+
+        return rgb; // возвращаем цвет
     }
 }
