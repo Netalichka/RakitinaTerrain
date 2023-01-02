@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d68aaeab0b179344834be4764bc273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySlider: 1
+  mySlider: 5
   myColor: {r: 0, g: 0, b: 0, a: 0}
   GO: {fileID: 1592252324}
   field: 
