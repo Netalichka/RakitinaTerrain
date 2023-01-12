@@ -221,5 +221,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+
+		public void Dropmoney(Object dropmoney)
+        {
+			if (dropmoney != null)
+				Instantiate(dropmoney, transform.position + transform.up + transform.forward, Quaternion.identity);
+
+        }
 	}
 }
