@@ -9,7 +9,14 @@ public class IKcontroller2 : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)] private float _handWeight;
     [SerializeField] private Vector3 _handOffSet;
-    [SerializeField, Range(0f, 1f)] private float _lookHeadWeight;
+    [SerializeField, Range(0f, 1f)] private float _lookIKWeight;
+
+    [Range(0f, 1f)] public float eyesWeight;
+    [Range(0f, 1f)] public float headWeight;
+    [Range(0f, 1f)] public float bodyWeight;
+    [Range(0f, 1f)] public float clumpWeight;
+  
+
 
     private Animator _animator;
 
@@ -32,6 +39,10 @@ public class IKcontroller2 : MonoBehaviour
 
         }
             
-           
+        if (_headPoint)
+        {
+            _animator.SetLookAtWeight(_lookIKWeight, bodyWeight, headWeight, eyesWeight, clumpWeight);
+            _animator.SetLookAtPosition(_headPoint.position);
+        }
     }
 }
