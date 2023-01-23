@@ -23,17 +23,17 @@ public class IKcontroller2 : MonoBehaviour
     private Quaternion leftFootRot;
     private Quaternion rightFootRot;
 
-    private float leftFootWeight;
+    //private float leftFootWeight;
     private float rightFootWeight;
 
-    private Transform leftLowerLeg;
-    private Transform leftFoot;
+    //private Transform leftLowerLeg;
+    //private Transform leftFoot;
     private Transform rightLowerLeg;
     private Transform rightFoot;
 
     public LayerMask mask;
 
-
+    private int _rightFootWeighthash;
 
     private Animator _animator;
 
@@ -41,6 +41,7 @@ public class IKcontroller2 : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _rightFootWeighthash = Animator.StringToHash("RightFoot");
         rightFoot = _animator.GetBoneTransform(HumanBodyBones.RightFoot);
         rightLowerLeg = _animator.GetBoneTransform(HumanBodyBones.RightLowerLeg);
         rightFootRot = rightFoot.rotation;
@@ -65,7 +66,7 @@ public class IKcontroller2 : MonoBehaviour
             _animator.SetLookAtPosition(_headPoint.position);
         }
 
-        rightFootWeight = 1;
+        rightFootWeight = _animator.GetFloat(_rightFootWeighthash);
         if (Physics.Raycast(rightLowerLeg.position, Vector3.down, out var hitR, 2f, mask))
         {
             rightFootPos = Vector3.Lerp(rightFootPos, hitR.point + Vector3.up * footOffsetY, Time.deltaTime * 10f);
