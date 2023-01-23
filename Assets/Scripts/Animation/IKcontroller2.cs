@@ -15,7 +15,24 @@ public class IKcontroller2 : MonoBehaviour
     [Range(0f, 1f)] public float headWeight;
     [Range(0f, 1f)] public float bodyWeight;
     [Range(0f, 1f)] public float clumpWeight;
-  
+
+    [Header("Foot")]
+    public float footOffsetY;
+    private Vector3 leftFootPos;
+    private Vector3 rightFootPos;
+    private Quaternion leftFootRot;
+    private Quaternion rightFootRot;
+
+    private float leftFootWeight;
+    private float rightFootWeight;
+
+    private Transform leftLowerLeg;
+    private Transform leftFoot;
+    private Transform rightLowerLeg;
+    private Transform rightFoot;
+
+    public LayerMask mask;
+
 
 
     private Animator _animator;
@@ -24,6 +41,9 @@ public class IKcontroller2 : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        rightFoot = _animator.GetBoneTransform(HumanBodyBones.RightFoot);
+        rightLowerLeg = _animator.GetBoneTransform(HumanBodyBones.RightLowerLeg);
+        rightFootRot = rightFoot.rotation;
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -44,5 +64,17 @@ public class IKcontroller2 : MonoBehaviour
             _animator.SetLookAtWeight(_lookIKWeight, bodyWeight, headWeight, eyesWeight, clumpWeight);
             _animator.SetLookAtPosition(_headPoint.position);
         }
+
+        rightFootWeight = 1;
+        if (Physics.Raycast(rightLowerLeg.position, Vector3.down, out var hitR, 2f, mask))
+        {
+            rightFootPos = Vector3.Lerp(rightFootPos, hitR.point + Vector3.up * footOffsetY, Time.deltaTime * 10f);
+            rightFootRot = Quaternion.FromToRotation(transform.up, hitR.normal) * transform.rotation;
+        }
+
+        _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
+        _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
+        _animator.SetIKPosition(AvatarIKGoal.RightFoot, rightFootPos);
+        _animator.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRot);
     }
 }

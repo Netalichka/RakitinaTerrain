@@ -1765,9 +1765,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _handPoint: {fileID: 759256020}
   _headPoint: {fileID: 1959946080}
-  _handWeight: 0.827
+  _handWeight: 0.476
   _handOffSet: {x: 0, y: 0.16, z: -0.13}
   _lookIKWeight: 0.996
+  eyesWeight: 0.581
+  headWeight: 0.476
+  bodyWeight: 0.488
+  clumpWeight: 0.448
+  footOffsetY: 0.3
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1870214434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,8 +1843,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870214434}
-  m_LocalRotation: {x: 0.005349389, y: -0.52972215, z: 0.003326591, w: 0.84814787}
-  m_LocalPosition: {x: 616.88696, y: 34.46475, z: 208.2836}
+  m_LocalRotation: {x: 0.018322859, y: -0.5104002, z: 0.010857443, w: 0.85967326}
+  m_LocalPosition: {x: 617.9119, y: 34.664658, z: 207.47673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
