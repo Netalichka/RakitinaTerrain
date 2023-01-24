@@ -21,8 +21,8 @@ public class RadDollcontroller2 : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _control = GetComponent<AICharacterControl>();
 
-        _rbs = GetComponentInChildren<Rigidbody>();
-        _colliders = GetComponentInChildren<Collider>();
+        _rbs = GetComponentsInChildren<Rigidbody>();
+        _colliders = GetComponentsInChildren<Collider>();
 
     }
 
@@ -46,7 +46,7 @@ public class RadDollcontroller2 : MonoBehaviour
 
         foreach (var collider in _colliders)
         {
-            collider.enabled - isActive;
+            collider.enabled = isActive;
         }
         _rbs[0].isKinematic = isActive;
         _colliders[0].enabled = !isActive;
