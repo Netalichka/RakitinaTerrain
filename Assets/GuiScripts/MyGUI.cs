@@ -33,7 +33,7 @@ public class MyGUI : MonoBehaviour
         GUI.Label(new Rect(220, 10, 100, 30), _massage);
 
         GUI.BeginGroup(new Rect(Screen.width / 2 - 25, 10, 200, 200));
-        GUI.Label(new Rect(0, 0, 70, 50), "HP = 100");
+        GUI.Label(new Rect(0, 0, 70, 50), $"HP ={maxHealth}");
         GUI.EndGroup();
     }
 }
